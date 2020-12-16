@@ -11,13 +11,18 @@ ii=0
 rept=int(input("How many numbers do you want in this pack? "))
 print("\nTitle=Numbers 1-"+str(rept)+"\nDescription=Every number up to "+str(rept)+" is creatable, but not beyond.\nId=numbers\nVersion=3."+str(rept)+"\nNumbers: #FFFFFF\nNot Numbers: #FFFFFF\nNumbers (Not Numbers)\nOperation (Not Numbers)\nNumbers + Numbers = 1 (Numbers)\nOperation + Operation = Subtraction (Not Numbers)\nSubtraction + Operation = Multiplication (Not Numbers)\nMultiplication + Operation = Division (Not Numbers)\n<-"+str(rept)+" + * =  < Negative"+str(rept)+" (Not Numbers)\nNot an integer + * = Not an integer (Not Numbers)\n>"+str(rept)+" + * = >"+str(rept)+" (Not Numbers)\nNumbers - Symbols used to count things.\nOperation - Actions performed on numbers.\nSubtraction - Taking the value of one number from another.\nMultiplication - Adding a number to itself a certian amount of times.\nDivision - Subtracting a number from itself a certian amount of times.\n>"+str(rept)+" - Greater than "+str(rept)+".\n< Negative"+str(rept)+" - Less than negative"+str(rept)+".\nNot an integer - The number is not a whole number.\n0 - The 0th number.")
 while i<=rept:
-    print(i,"+","Subtraction =","Negative "+str(i),"(Numbers)")
-    print(i,"+","Multiplication =",str(i)+"x","(Numbers)")
-    print(i,"+","Division =",str(i)+"/","(Numbers)")
+    print(i,"+ Subtraction = Negative",str(i),"(Numbers)")
+    print(i,"+ Multiplication =",str(i)+"x (Numbers)")
+    print(i,"+ Division =",str(i)+"/ (Numbers)")
     while ii<=i:
-        if i+ii>rept: iii=">"+str(rept)
-        else: iii=i+ii
-        print(i,"+",ii,"=",iii,"(Numbers)")
+        if i+ii>rept:
+            iii=str(rept)
+            print(i,"+",ii,"= >",iii,"(Not Numbers)")
+            print("Negative",i,"+","Negative",ii,"= < Negative",iii,"(Not Numbers)")
+        else:
+            iii=i+ii
+            print(i,"+",ii,"=",iii,"(Numbers)")
+            print("Negative",i,"+","Negative",ii,"=","Negative",iii,"(Numbers)")
         ii+=1
     ii=0
     while ii<=rept:
