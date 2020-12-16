@@ -31,12 +31,18 @@ while i<=rept:
             if ii-i<0: iii="Negative "+str(-1*(ii-i))+" (Numbers)"
             else: iii=str(ii-i)+" (Numbers)"
         print(ii,"+","Negative "+str(i),"=",iii)
-        if i*ii>rept: iii=">"+str(rept)+" (Not Numbers)"
-        else: iii=str(i*ii)+" (Numbers)"
-        print(ii,"+",str(i)+"x","=",iii)
+        if i*ii>rept:
+            ii=str(rept)+" (Not Numbers)"
+            print(ii,"+",str(i)+"x = >",iii)
+            print("Negative",ii,"+",str(i)+"x = < Negative",iii)
+        else:
+            iii=str(i*ii)+" (Numbers)"
+            print(ii,"+",str(i)+"x =",iii)
+            print("Negative",ii,"+",str(i)+"x = Negative",iii)
         if not isInt(ii/i): iii="Not an integer (Not Numbers)"
         else: iii=str(int(ii/i))+" (Numbers)"
         print(ii,"+",str(i)+"/","=",iii)
+        print("Negative",ii,"+",str(i)+"/ = Negative",iii)
         ii+=1
     ii=0
     tth=findplace(i,1)
@@ -50,5 +56,5 @@ while i<=rept:
     print(str(i)+"x"," - The ",i,th," number, ready to be multiplied with another number.",sep="")
     print(str(i)+"/"," - The ",i,th," number, ready to be divided with another number.",sep="")
     i+=1
-#add lines for negative numbers too
 #operations: exponets (5^3=125), factorials (5!=120), (what is this called?) n + n-1 + n-2 (5+4+3+2+1=15), etc.
+#make negative numbers that you can multiply and divide with
