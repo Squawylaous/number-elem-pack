@@ -6,14 +6,25 @@ def findplace(x,rept):
         x%=10**reptt
     x=int(x//(10**(rept-1)))
     return x
+def fact(x):
+    for i in range(x-1): x*=i+1
+    return x
 i=1
 ii=0
 rept=int(input("How many numbers do you want in this pack? "))
-print("\nTitle=Numbers 1-"+str(rept)+"\nDescription=Every number up to "+str(rept)+" is creatable, but not beyond.\nId=numbers\nVersion=3."+str(rept)+"\nNumbers: #FFFFFF\nNot Numbers: #FFFFFF\nNumbers (Not Numbers)\nOperation (Not Numbers)\nNumbers + Numbers = 1 (Numbers)\nOperation + Operation = Subtraction (Not Numbers)\nSubtraction + Operation = Multiplication (Not Numbers)\nMultiplication + Operation = Division (Not Numbers)\n<-"+str(rept)+" + * =  < Negative"+str(rept)+" (Not Numbers)\nNot an integer + * = Not an integer (Not Numbers)\n>"+str(rept)+" + * = >"+str(rept)+" (Not Numbers)\nNumbers - Symbols used to count things.\nOperation - Actions performed on numbers.\nSubtraction - Taking the value of one number from another.\nMultiplication - Adding a number to itself a certian amount of times.\nDivision - Subtracting a number from itself a certian amount of times.\n>"+str(rept)+" - Greater than "+str(rept)+".\n< Negative"+str(rept)+" - Less than negative"+str(rept)+".\nNot an integer - The number is not a whole number.\n0 - The 0th number.")
+print("\nTitle=Numbers 1-"+str(rept)+"\nDescription=Every number up to "+str(rept)+" is creatable, but not beyond.\nId=numbers\nVersion=3."+str(rept)+"\nNumbers: #FFFFFF\nNot Numbers: #FFFFFF\nNumbers (Not Numbers)\nOperation (Not Numbers)\nNumbers + Numbers = 1 (Numbers)\nOperation + Operation = Subtraction (Not Numbers)\nSubtraction + Operation = Multiplication (Not Numbers)\nMultiplication + Operation = Division (Not Numbers)\nDivision + Operation = Exponentiation (Not Numbers)\nExponentiation + Operation = Factorial (Not Numbers)\n<-"+str(rept)+" + * =  < Negative"+str(rept)+" (Not Numbers)\nNot an integer + * = Not an integer (Not Numbers)\n>"+str(rept)+" + * = >"+str(rept)+" (Not Numbers)\nNumbers - Symbols used to count things.\nOperation - Actions performed on numbers.\nSubtraction - Taking the value of one number from another.\nMultiplication - Adding a number to itself a certian amount of times.\nExponentiation - Multiplying a number with itself a certian amount of times.\nFactorial - The factorial of a number is the product of all whole numbers less than or equal to the number but above zero.\nDivision - Subtracting a number from itself a certian amount of times.\n>"+str(rept)+" - Greater than "+str(rept)+".\n< Negative"+str(rept)+" - Less than negative"+str(rept)+".\nNot an integer - The number is not a whole number.\n0 - The 0th number.")
 while i<=rept:
     print(i,"+ Subtraction = Negative",str(i),"(Numbers)")
-    print(i,"+ Multiplication =",str(i)+"x (Numbers)")
-    print(i,"+ Division =",str(i)+"/ (Numbers)")
+    print(i,"+ Multiplication = x"+str(i),"(Numbers)")
+    print(i,"+ Division = /"+str(i),"(Numbers)")
+    print("Negative",i,"+ Multiplication = x Negative",str(i),"(Numbers)")
+    print("Negative",i,"+ Division = / Negative",str(i),"(Numbers)")
+    print("x"+str(i),"+ Subtraction = x Negative",str(i),"(Numbers)")
+    print("/"+str(i),"+ Subtraction = / Negative",str(i),"(Numbers)")
+    print(i,"+ Exponentiation = ^"+str(i),"(Numbers)")
+    if fact(i)>rept: iii=">"+str(rept)+" (Not Numbers)"
+    else: iii=fact(i)+" (Numbers)"
+    print(i,"+ Factorial =",iii)
     while ii<=i:
         if i+ii>rept:
             iii=str(rept)
@@ -32,17 +43,28 @@ while i<=rept:
             else: iii=str(ii-i)+" (Numbers)"
         print(ii,"+","Negative "+str(i),"=",iii)
         if i*ii>rept:
-            ii=str(rept)+" (Not Numbers)"
-            print(ii,"+",str(i)+"x = >",iii)
-            print("Negative",ii,"+",str(i)+"x = < Negative",iii)
+            iii=str(rept)+" (Not Numbers)"
+            print(ii,"+ x"+str(i),"= >",iii)
+            print("Negative",ii,"+ x"+str(i),"= < Negative",iii)
+            print(ii,"+ x Negative "+str(i),"= < Negative",iii)
+            print("Negative",ii,"+ x Negative "+str(i),"= >",iii)
         else:
             iii=str(i*ii)+" (Numbers)"
-            print(ii,"+",str(i)+"x =",iii)
-            print("Negative",ii,"+",str(i)+"x = Negative",iii)
+            print(ii,"+ x"+str(i),"=",iii)
+            print("Negative",ii,"+ x"+str(i),"= Negative",iii)
+            print(ii,"+ x Negative "+str(i),"= Negative",iii)
+            print("Negative",ii,"+ x Negative "+str(i),"=",iii)
         if not isInt(ii/i): iii="Not an integer (Not Numbers)"
         else: iii=str(int(ii/i))+" (Numbers)"
-        print(ii,"+",str(i)+"/","=",iii)
-        print("Negative",ii,"+",str(i)+"/ = Negative",iii)
+        print(ii,"+ /"+str(i),"=",iii)
+        print("Negative",ii,"+ /"+str(i),"= Negative",iii)
+        print(ii,"+ / Negative "+str(i),"= Negative",iii)
+        print("Negative",ii,"+ / Negative"+str(i),"=",iii)
+        if ii^i>rept: iii=str(rept)+" (Not Numbers)"
+        else: iii=ii^i
+        print(ii,"+ ^"+str(i),"= >"+iii)
+        if int(ii)/2!=ii/2: iii="< Negative "+iii
+        print("Negative",ii,"+ ^"+str(i),"=",iii)
         ii+=1
     ii=0
     tth=findplace(i,1)
@@ -53,8 +75,10 @@ while i<=rept:
         elif tth==3: th="rd"
     print(i,"- The ",i,th," number.",sep="")
     print("Negative "+str(i)," - The ",i,th," negative number.",sep="")
-    print(str(i)+"x"," - The ",i,th," number, ready to be multiplied with another number.",sep="")
-    print(str(i)+"/"," - The ",i,th," number, ready to be divided with another number.",sep="")
+    print("x"+str(i)," - The ",i,th," number, ready to be multiplied with another number.",sep="")
+    print("/"+str(i)," - The ",i,th," number, ready to divide another number.",sep="")
+    print("x Negative "+str(i)," - The ",i,th," negative number, ready to be multiplied with another number.",sep="")
+    print("/ Negative "+str(i)," - The ",i,th," negative number, ready to divide another number.",sep="")
+    print("^"+str(i)," - The ",i,th," negative number, ready to be exponentiated with another number.",sep="")
     i+=1
-#operations: exponets (5^3=125), factorials (5!=120), (what is this called?) n + n-1 + n-2 (5+4+3+2+1=15), etc.
-#make negative numbers that you can multiply and divide with
+    
