@@ -23,7 +23,7 @@ while i<=rept:
     print("/"+str(i),"+ Subtraction = / Negative",str(i),"(Numbers)")
     print(i,"+ Exponentiation = ^"+str(i),"(Numbers)")
     if fact(i)>rept: iii=">"+str(rept)+" (Not Numbers)"
-    else: iii=fact(i)+" (Numbers)"
+    else: iii=str(fact(i))+" (Numbers)"
     print(i,"+ Factorial =",iii)
     while ii<=i:
         if i+ii>rept:
@@ -59,12 +59,18 @@ while i<=rept:
         print(ii,"+ /"+str(i),"=",iii)
         print("Negative",ii,"+ /"+str(i),"= Negative",iii)
         print(ii,"+ / Negative "+str(i),"= Negative",iii)
-        print("Negative",ii,"+ / Negative"+str(i),"=",iii)
-        if ii^i>rept: iii=str(rept)+" (Not Numbers)"
-        else: iii=ii^i
-        print(ii,"+ ^"+str(i),"= >"+iii)
-        if int(ii)/2!=ii/2: iii="< Negative "+iii
-        print("Negative",ii,"+ ^"+str(i),"=",iii)
+        print("Negative",ii,"+ / Negative "+str(i),"=",iii)
+        if ii*i>rept:
+            iii=str(rept)+" (Not Numbers)"
+            if int(ii)/2!=ii/2: iii="< Negative "+iii
+            else: iii=">"+iii
+            print(ii,"+ ^"+str(i),"=",iii)
+            print("Negative",ii,"+ ^"+str(i),"=",iii)
+        else:
+            iii=ii*i
+            if int(ii)/2!=ii/2: iii="Negative "+iii
+            print(ii,"+ ^"+str(i),"=",iii,"(Numbers)")
+            print("Negative",ii,"+ ^"+str(i),"=",iii,"(Numbers)")
         ii+=1
     ii=0
     tth=findplace(i,1)
